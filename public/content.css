@@ -1,0 +1,312 @@
+/* AI DOM Tutor - Content Styles */
+
+.ai-tutor-launcher {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999999;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.tutor-btn {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  outline: none;
+}
+
+.tutor-btn:hover {
+  transform: scale(1.1) translateY(-2px);
+  box-shadow: 0 12px 40px rgba(102, 126, 234, 0.5);
+}
+
+.tutor-btn:focus {
+  outline: 3px solid rgba(102, 126, 234, 0.5);
+  outline-offset: 2px;
+}
+
+.tutor-btn::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  z-index: -1;
+  opacity: 0.6;
+  animation: ai-tutor-pulse 3s ease-in-out infinite;
+}
+
+@keyframes ai-tutor-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+.ai-tutor-launcher.active .tutor-btn {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  box-shadow: 0 8px 32px rgba(16, 185, 129, 0.4);
+}
+
+.ai-tutor-launcher.active .tutor-btn::before {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.tutor-icon {
+  width: 36px;
+  height: 36px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+/* Language Dropdown */
+.language-dropdown {
+  position: absolute;
+  bottom: 80px;
+  right: 0;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 16px 64px rgba(0, 0, 0, 0.15);
+  padding: 12px;
+  min-width: 200px;
+  max-height: 300px;
+  overflow-y: auto;
+  transform-origin: bottom right;
+  animation: ai-tutor-dropdown-slide 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+@keyframes ai-tutor-dropdown-slide {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.language-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 15px;
+  font-weight: 500;
+  color: #1f2937;
+  outline: none;
+}
+
+.language-option:hover {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  color: #667eea;
+  transform: translateX(2px);
+}
+
+.language-option:focus {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
+  color: #667eea;
+  outline: 2px solid rgba(102, 126, 234, 0.3);
+  outline-offset: -2px;
+}
+
+.lang-flag {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.lang-label {
+  flex: 1;
+}
+
+.language-option[dir="rtl"] {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Element Highlighting */
+.ai-tutor-highlight {
+  outline: 3px solid #3b82f6 !important;
+  outline-offset: 4px !important;
+  box-shadow: 0 0 0 8px rgba(59, 130, 246, 0.2) !important;
+  border-radius: 8px !important;
+  position: relative !important;
+  z-index: 999998 !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.ai-tutor-highlight::after {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border-radius: 12px;
+  background: linear-gradient(45deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+  z-index: -1;
+  animation: ai-tutor-shimmer 2s ease-in-out infinite;
+}
+
+@keyframes ai-tutor-shimmer {
+  0%, 100% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(100%);
+  }
+}
+
+/* Tooltip */
+.ai-tutor-tooltip {
+  position: absolute;
+  background: #1f2937;
+  color: white;
+  padding: 16px 20px;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 350px;
+  z-index: 999999;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+  animation: ai-tutor-tooltip-fade 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@keyframes ai-tutor-tooltip-fade {
+  from {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.ai-tutor-tooltip::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 24px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid #1f2937;
+  filter: drop-shadow(0 -2px 4px rgba(0, 0, 0, 0.1));
+}
+
+/* RTL Support */
+[dir="rtl"] .ai-tutor-launcher {
+  left: 24px;
+  right: auto;
+}
+
+[dir="rtl"] .language-dropdown {
+  left: 0;
+  right: auto;
+  transform-origin: bottom left;
+}
+
+[dir="rtl"] .ai-tutor-tooltip::before {
+  left: auto;
+  right: 24px;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .tutor-btn,
+  .language-option,
+  .ai-tutor-highlight,
+  .ai-tutor-tooltip {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .tutor-btn::before {
+    animation: none !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .tutor-btn {
+    border: 2px solid white;
+  }
+  
+  .language-dropdown {
+    border: 2px solid black;
+  }
+  
+  .ai-tutor-tooltip {
+    border: 2px solid white;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .language-dropdown {
+    background: #374151;
+    border-color: #4b5563;
+  }
+  
+  .language-option {
+    color: #f9fafb;
+  }
+  
+  .language-option:hover {
+    background: rgba(102, 126, 234, 0.2);
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .ai-tutor-launcher {
+    bottom: 16px;
+    right: 16px;
+  }
+  
+  .tutor-btn {
+    width: 56px;
+    height: 56px;
+  }
+  
+  .tutor-icon {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .language-dropdown {
+    min-width: 180px;
+    bottom: 68px;
+  }
+  
+  .ai-tutor-tooltip {
+    max-width: 280px;
+    font-size: 13px;
+    padding: 12px 16px;
+  }
+}

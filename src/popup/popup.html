@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    :root {
+      --bg-primary: #1a1a1a;
+      --bg-secondary: #2d2d2d;
+      --text-primary: #ffffff;
+      --text-secondary: #a0a0a0;
+      --accent: #3b82f6;
+      --success: #10b981;
+      --danger: #ef4444;
+    }
+
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+
+    body {
+      width: 400px;
+      min-height: 500px;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      padding: 0;
+    }
+
+
+    .container {
+      padding: 20px;
+    }
+
+
+    .header {
+      text-align: center;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--bg-secondary);
+    }
+
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+    }
+
+
+    .section {
+      background: var(--bg-secondary);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+
+    .section-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+
+    .section-title svg {
+      width: 18px;
+      height: 18px;
+    }
+
+
+    .form-group {
+      margin-bottom: 12px;
+    }
+
+
+    label {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 6px;
+      color: var(--text-secondary);
+    }
+
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #404040;
+      border-radius: 8px;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-size: 14px;
+    }
+
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+
+    .btn {
+      padding: 10px 16px;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+
+    .btn-success {
+      background: var(--success);
+      color: white;
+    }
+
+
+    .btn-danger {
+      background: var(--danger);
+      color: white;
+    }
+
+
+    .btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+
+    .language-list, .provider-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+
+    .language-item, .provider-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px;
+      background: var(--bg-primary);
+      border-radius: 8px;
+    }
+
+
+    .language-info, .provider-info {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+
+    .language-code {
+      background: var(--accent);
+      color: white;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+
+    .actions {
+      display: flex;
+      gap: 6px;
+    }
+
+
+    .icon-btn {
+      padding: 6px;
+      border: none;
+      border-radius: 6px;
+      background: transparent;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    .icon-btn:hover {
+      background: var(--bg-secondary);
+    }
+
+
+    .test-btn {
+      background: var(--success);
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+
+    .status {
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+
+    .status.success {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--success);
+    }
+
+
+    .status.error {
+      background: rgba(239, 68, 68, 0.2);
+      color: var(--danger);
+    }
+
+
+    .hidden {
+      display: none;
+    }
+
+
+    .tab-container {
+      display: flex;
+      margin-bottom: 16px;
+      background: var(--bg-secondary);
+      border-radius: 8px;
+      padding: 4px;
+    }
+
+
+    .tab {
+      flex: 1;
+      padding: 8px 12px;
+      text-align: center;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+
+
+    .tab.active {
+      background: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">AI DOM Tutor</div>
+      <div style="color: var(--text-secondary); font-size: 14px;">
+        Multilingual Web Assistance
+      </div>
+    </div>
+    <div class="tab-container">
+      <div class="tab active" data-tab="languages">Languages</div>
+      <div class="tab" data-tab="providers">AI Providers</div>
+      <div class="tab" data-tab="analytics">Analytics</div>
+    </div>
+
+
+    <!-- Languages Tab -->
+    <div id="languages-tab" class="tab-content">
+      <div class="section">
+        <div class="section-title">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm0-8h-2V7h2v2zm4 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V7h2v2z"/>
+          </svg>
+          Manage Languages
+        </div>
+        
+        <div class="form-group">
+          <label>Add New Language</label>
+          <div style="display: flex; gap: 8px;">
+            <input type="text" id="new-lang-code" placeholder="Code (e.g., es)" style="flex: 1;">
+            <input type="text" id="new-lang-label" placeholder="Label (e.g., Spanish)" style="flex: 2;">
+            <button class="btn btn-primary" onclick="addLanguage()">Add</button>
+          </div>
+        </div>
+        <div class="language-list" id="languages-list">
+          <!-- Languages will be populated here -->
+        </div>
+      </div>
+    </div>
+
+
+    <!-- AI Providers Tab -->
+    <div id="providers-tab" class="tab-content hidden">
+      <div class="section">
+        <div class="section-title">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M21 12.22C21 6.73 16.74 3 12 3c-4.69 0-9 3.65-9 9.28-.6.34-1 .98-1 1.72v2c0 1.1.9 2 2 2h1v-6.1c0-3.87 3.13-7 7-7s7 3.13 7 7V19h-8v2h8c1.1 0 2-.9 2-2v-1.22c.59-.31 1-.92 1-1.64v-2.3c0-.7-.41-1.31-1-1.62z"/>
+          </svg>
+          AI Provider Configuration
+        </div>
+        <div class="form-group">
+          <label>Active Provider</label>
+          <select id="active-provider">
+            <option value="openai">OpenAI</option>
+            <option value="gemini">Google Gemini</option>
+            <option value="claude">Anthropic Claude</option>
+            <option value="groq">Groq</option>
+          </select>
+        </div>
+        <div class="provider-list" id="providers-list">
+          <!-- Providers will be populated here -->
+        </div>
+        <div class="form-group">
+          <label>Test Provider</label>
+          <div style="display: flex; gap: 8px;">
+            <input type="text" id="test-input" placeholder="Enter test element description" style="flex: 1;">
+            <button class="btn btn-success" onclick="testProvider()">Test</button>
+          </div>
+          <div id="test-result" class="status hidden"></div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Analytics Tab -->
+    <div id="analytics-tab" class="tab-content hidden">
+      <div class="section">
+        <div class="section-title">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+          </svg>
+          Usage Analytics
+        </div>
+        <div style="color: var(--text-secondary); font-size: 14px; text-align: center; padding: 40px;">
+          Analytics data will be displayed here
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="./popup.ts"></script>
+</body>
+</html>
